@@ -1,0 +1,29 @@
+{% extends 'ventas/index.html' %}
+{% load static %}
+
+{% block titulo %}
+Modificar Auto
+{% endblock titulo %}
+
+{% block cabecera %}
+Modificar Auto
+{% endblock cabecera %}
+
+{% block contenido %}
+<br>
+<div align="center">
+    <form method="post" style="display: inline-block;">
+        <h4><b>Datos del Auto</b></h4>
+        {% csrf_token %}
+        <table>
+            {{ form.as_table }}
+        </table>
+        <br>
+        <button type="submit">Modificar Auto</button>
+    </form>
+</div><br>
+{% endblock contenido %}
+
+{% block contact %}
+
+{% endblock contact %}

@@ -1,0 +1,31 @@
+{% extends 'ventas/index.html' %}
+{% load static %}
+
+{% block titulo %}
+Agregar Cliente
+{% endblock titulo %}
+
+{% block cabecera %}
+Agregar Cliente
+{% endblock cabecera %}
+
+{% block contenido %}
+<br>
+<div align="center">
+    <form method="post">
+        <h4><b>Datos del Cliente</b></h4>
+        {% csrf_token %}
+        <table>
+            {{ form.as_table }}
+        </table>
+        <br>
+        <button type="submit">Agregar Cliente</button>
+    </form>
+</div>
+<br>
+
+{% endblock contenido %}
+
+{% block contact %}
+
+{% endblock contact %}

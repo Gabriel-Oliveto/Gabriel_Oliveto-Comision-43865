@@ -1,0 +1,31 @@
+{% extends 'ventas/index.html' %}
+{% load static %}
+
+{% block titulo %}
+Borrado de Ventas
+{% endblock titulo %}
+
+{% block cabecera %}
+Borrado de venta
+{% endblock cabecera %}
+
+{% block contenido %}
+<div style="margin-left: 5cm;">
+<br>
+<h2>Confirmar eliminación</h2>
+<p>¿Estás seguro de que deseas eliminar la venta "{{ venta }}"?</p>
+<form method="post">
+  {% csrf_token %}
+  <input type="submit" name="accion" value="Eliminar">
+  <a href="{% url 'buscar_ventas' %}">
+    <input type="button" value="Cancelar">
+  </a>
+</form>
+<br>
+</div>
+
+{% endblock contenido %}
+
+{% block contact %}
+
+{% endblock contact %}

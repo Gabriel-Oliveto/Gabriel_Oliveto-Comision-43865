@@ -1,0 +1,66 @@
+{% extends 'ventas/index.html' %}
+{% load static %}
+
+{% block titulo %}
+Busquedas de Ventas
+{% endblock titulo %}
+
+{% block cabecera %}
+Buscar Venta
+{% endblock cabecera %}
+
+{% block contenido %}
+<div align="center">
+<br>
+<h4><b>Buscar Venta por Cliente</b></h4><br>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_table }}
+    <input type="submit" value="Buscar">
+  </form>
+<br><br>
+<h4><b>Resultados de la busqueda:</b></h4>
+</div>
+{% if ventas %}
+<table class="table" style="margin-left: 20px;">
+    <thead>
+        <tr>
+            <th>Cliente</th>
+            <th>Auto</th>
+            <th>Fecha</th>
+            <th>Precio</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for venta in ventas %}
+        <tr>
+            <td>{{ venta.cliente }}</td>
+            <td>{{ venta.auto }}</td>
+            <td>{{ venta.fecha }}</td>
+            <td>${{ venta.auto.precio}}</td>
+            <td>
+                <td style="text-align: right;">
+                    <div style="position: relative; right: 1cm;">
+                      <a href="{% url 'actualizar_venta' venta.id %}" class="btn btn-primary" style="width: 70px; height: 40px; display: inline-flex; justify-content: center; align-items: center; margin-right: 10px;">
+                        <i class="fa fa-edit fa-lg" title="Editar Registro"></i>
+                      </a>
+                  
+                      <a href="{% url 'borrar_venta' venta.id %}" class="btn btn-danger" style="width: 70px; height: 40px; display: inline-flex; justify-content: center; align-items: center;">
+                        <i class="fa fa-trash fa-lg" title="Eliminar Registro"></i>
+                      </a>
+                    </div>
+                  </td>
+    </td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+{% else %}
+<p>No se encontraron ventas para el cliente ingresado.</p>
+{% endif %}
+
+{% endblock contenido %}
+
+{% block contact %}
+
+{% endblock contact %}
